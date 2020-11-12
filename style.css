@@ -197,12 +197,12 @@ header img {
 }
 
 #prev-conv .contact-list .contact .text-box {
+    flex-grow: 1;
     padding: 10px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid #f2f2f2;
-
     border
 }
 

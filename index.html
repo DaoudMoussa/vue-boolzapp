@@ -46,41 +46,11 @@
                                 </div>
                             </div>
                             <ul class="contact-list">
-                                <li class="contact">
-                                    <img src="avatar_icons/avatar_1.jpg" alt="">
+                                <li v-for="contact in contacts" class="contact">
+                                    <img :src="getAvatar(contact)" alt="">
                                     <div class="text-box">
-                                        <div class="name">nome</div>
-                                        <p class="last-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                    <div class="last-access">
-                                        17:21
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <img src="avatar_icons/avatar_1.jpg" alt="">
-                                    <div class="text-box">
-                                        <div class="name">nome</div>
-                                        <p class="last-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                    <div class="last-access">
-                                        17:21
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <img src="avatar_icons/avatar_1.jpg" alt="">
-                                    <div class="text-box">
-                                        <div class="name">nome</div>
-                                        <p class="last-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                    <div class="last-access">
-                                        17:21
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <img src="avatar_icons/avatar_1.jpg" alt="">
-                                    <div class="text-box">
-                                        <div class="name">nome</div>
-                                        <p class="last-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <div class="name">{{ contact.name }}</div>
+                                        <p class="last-message">{{ contact.messages[contact.messages.length - 1].message }}</p>
                                     </div>
                                     <div class="last-access">
                                         17:21
