@@ -1,28 +1,7 @@
 const app = new Vue({
     el: '#root',
     data: {
-        activeChat: {
-            name: 'Michele',
-            avatar: '_1',
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    message: 'Hai portato a spasso il cane?',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    message: 'Ricordati di dargli da mangiare',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 16:15:22',
-                    message: 'Tutto fatto!',
-                    status: 'received'
-                }
-            ],
-        },
+        activeChat: {}, // Created gli passa il riferimento dell'oggetto del primo contatto
         contacts: [
             {
                 name: 'Michele',
@@ -107,8 +86,8 @@ const app = new Vue({
                     }
                 ],
             },
-        ]
-
+        ],
+        newMessage: ''
 
 
     },
@@ -118,7 +97,44 @@ const app = new Vue({
         },
         openChat(contact) {
             this.activeChat = contact;
+        },
+        sendMessage() {
+            const myDate = getDate();
+
+            const newObjectMessage = {
+                date: myDate,
+                message: this.newMessage,
+                status: 'sent'
+            }
+
+            this.activeChat.messages.push(newObjectMessage);
+            setTimeout(() => {
+                const theirDate = getDate();
+                const newAnswerMessage = {
+                    date: theirDate,
+                    message: 'ok',
+                    status: 'received'
+                }
+                this.activeChat.messages.push(newAnswerMessage);
+            }, 1000);
+
+            this.newMessage = '';
         }
 
+    },
+    created() {
+        this.activeChat = this.contacts[0];
     }
 });
+
+function getDate() {
+    const date = new Date();
+    const month = date.getMonth() + 1
+    const year = date.getFullYear();
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+
+    return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+}

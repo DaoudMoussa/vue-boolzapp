@@ -80,7 +80,7 @@
                             <ul class="messages">
                                 <li v-for="message in activeChat.messages"
                                     :class="message.status"
-                                    class="message received">
+                                    class="message">
                                     <span>{{message.message}}</span>
                                     <small class="time">{{ message.date.substring(11, 16) }}</small>
                                 </li>
@@ -88,7 +88,9 @@
                         </div>
                         <footer>
                             <i class="far fa-smile"></i>
-                            <input placeholder="Scrivi un messaggio" type="text" name="" value="">
+                            <input v-model='newMessage'
+                                   @keyup.enter='sendMessage'
+                                   placeholder="Scrivi un messaggio">
                             <i class="fas fa-microphone"></i>
                         </footer>
                     </main>
