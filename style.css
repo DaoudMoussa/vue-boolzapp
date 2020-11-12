@@ -2,6 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 #page-container {
@@ -32,4 +38,86 @@
     width: 80%;
     background: white;
     border-radius: 5px;
+}
+
+header {
+    height: 60px;
+    padding: 10px 15px;
+    background: #ededed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+aside {
+    float: left;
+    width: 34%;
+}
+
+
+aside header .my-avatar {
+    height: 40px;
+    border-radius: 50%;
+}
+
+aside header a {
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 20px;
+    color: #919191;
+}
+
+#notification-cta {
+    height: 80px;
+    padding: 10px 15px;
+    background: #8edafc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#notification-cta .left-side {
+    display: flex;
+    align-items: center;
+}
+
+#notification-cta .bell-container {
+    width: 60px;
+    height: 60px;
+    padding: 18px;
+    margin-right: 10px;
+    font-size: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: #8edafc;
+}
+
+#notification-cta .text-box {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+#notification-cta .text-box a {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+
+#notification-cta .text-box a:hover {
+    text-decoration: underline;
+}
+
+.right-side {
+    display: none;
+    color: white;
+    font-size: 24px;
+}
+
+#notification-cta:hover .right-side {
+    display: block;
 }
