@@ -64,8 +64,8 @@
                             <div class="left-side">
                                 <img class="active-avatar" src="avatar_icons/avatar_1.jpg" alt="">
                                 <div class="text-box">
-                                    <div class="name">nome</div>
-                                    <p class="last-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <div class="name">{{ activeChat.name }}</div>
+                                    <p class="last-access">Ulitmo accesso 16:40</p>
                                 </div>
                             </div>
                             <div class="right-side">
@@ -76,12 +76,12 @@
                         </header>
                         <div id="chat-container">
                             <ul class="messages">
-                                <li class="message received">
-                                    <span>ciaoo</span>
-                                    <small class="time">17:20</small>
+                                <li v-for="message in activeChat.messages"
+                                    :class="message.status"
+                                    class="message received">
+                                    <span>{{message.message}}</span>
+                                    <small class="time">{{message.date.substring(11, 16)}}</small>
                                 </li>
-                                <li class="message sent">hey</li>
-                                <li class="message sent">come stai?</li>
                             </ul>
                         </div>
                         <footer>
