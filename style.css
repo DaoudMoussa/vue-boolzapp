@@ -5,6 +5,11 @@
     font-family: sans-serif;
 }
 
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
 a {
     text-decoration: none;
     color: black;
@@ -34,8 +39,8 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 95%;
     width: 80%;
+    height: 95%;
     background: white;
     border-radius: 5px;
 }
@@ -52,8 +57,12 @@ header {
 aside {
     float: left;
     width: 34%;
+    height: 95vh;
 }
 
+aside header {
+    border-right: 1px solid #dadada;
+}
 
 aside header .my-avatar {
     height: 40px;
@@ -74,6 +83,7 @@ aside header a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 1px 0 1px rgba(0, 0, 0, 0.05);
 }
 
 #notification-cta .left-side {
@@ -120,4 +130,93 @@ aside header a {
 
 #notification-cta:hover .right-side {
     display: block;
+}
+
+#prev-conv {
+    box-shadow: 1px 0 1px rgba(0, 0, 0, 0.05);
+    height: calc(100% - 60px - 80px);
+}
+
+#prev-conv .input-box {
+    background: #ededed;
+    padding: 5px 10px;
+}
+
+#prev-conv .search-bar {
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    background: white;
+}
+
+#prev-conv .search-bar i {
+    display: inline-block;
+    padding-right: 15px;
+    color: #919191;
+    font-size: 20px;
+}
+
+#prev-conv .search-bar input {
+    width: calc(100% - 35px);
+    border: none;
+    height: 100%;
+    font-size: 16px;
+}
+
+#prev-conv .search-bar input::placeholder {
+    color: #919191;
+}
+
+#prev-conv .contact-list {
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    list-style-type: none;
+}
+
+#prev-conv .contact-list .contact {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+#prev-conv .contact-list .contact img {
+    height: 50px;
+    margin: 10px 10px;
+    border-radius: 50%;
+    box-shadow: 2px 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+#prev-conv .contact-list .contact .text-box {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #f2f2f2;
+
+    border
+}
+
+#prev-conv .contact-list .contact .text-box .name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#prev-conv .contact-list .contact .text-box p {
+    font-size: 14px;
+    height: 1em;
+    text-overflow: ellipsis;
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #696969;
+}
+
+#prev-conv .contact-list .contact .last-access {
+    padding: 20px 10px 5px 0;
+    font-size: 12px;
+    color: #696969;
+    border-bottom: 1px solid #f2f2f2;
 }
