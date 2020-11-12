@@ -10,9 +10,15 @@
     display: table;
     clear: both;
 }
+
 a {
     text-decoration: none;
     color: black;
+}
+
+input {
+    border: none;
+    outline: none;
 }
 
 #page-container {
@@ -222,10 +228,92 @@ header img {
     border-bottom: 1px solid #f2f2f2;
 }
 
+main {
+    height: 95vh;
+    width: 66%;
+    float: left;
+}
 header .left-side {
     display: flex;
 }
 
 header .left-side img {
     margin-right: 10px;
+}
+
+#chat-container {
+    height: calc(100% - 120px);
+    overflow-y: scroll;
+    background: url("https://fsb.zobj.net/crop.php?r=-P6OqVJVtAEn3HWiU44dCF8VtpVjSmB5btM0cUHqUgbi2xFGN3YQ8q3XpEUlOG0hF6rSZas8eX_zBoKWmF3IaPifbkt6ToV-mPQB0-EwU4wUa31Iu5gWsZjCHzaoC73kj1mmSdn2oKc1q0nIrFZCkWHE_fyIsJaPkcw0jDptCxL1Kxt0me-T_Jx8Ts0");
+    position: relative;
+}
+
+.messages {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    list-style-type: none;
+}
+
+.message {
+    padding: 10px 25px 10px 15px;;
+    max-width: 300px;
+    min-width: 70px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    clear: both;
+    position: relative;
+    box-shadow: 0 2px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.received {
+    float: left;
+    background: white;
+    margin-left: 70px;
+}
+
+.sent {
+    float: right;
+    background: #dcf8c7;
+    margin-right: 70px;
+}
+
+.message .time {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 8px;
+    color: #78886a;
+}
+
+footer {
+    height: 60px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f0f0;
+}
+
+footer i {
+    margin-right: 15px;
+    font-size: 20px;
+    color: #939393;
+}
+
+footer .fa-microphone {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+footer input {
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 30px;
+    font-size: 16px;
+    padding: 10px
+}
+
+footer input::placeholder {
+    color: #9b9b9b;
 }
