@@ -115,6 +115,9 @@ const app = new Vue({
     methods: {
         getAvatar(contact) {
             return "avatar_icons/avatar" + contact.avatar + ".jpg"
+        },
+        openChat(contact) {
+            this.activeChat = contact;
         }
 
     }

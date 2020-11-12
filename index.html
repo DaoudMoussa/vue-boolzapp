@@ -46,7 +46,9 @@
                                 </div>
                             </div>
                             <ul class="contact-list">
-                                <li v-for="contact in contacts" class="contact">
+                                <li v-for="contact in contacts"
+                                    @click="openChat(contact)"
+                                    class="contact">
                                     <img :src="getAvatar(contact)" alt="">
                                     <div class="text-box">
                                         <div class="name">{{ contact.name }}</div>
@@ -62,7 +64,7 @@
                     <main>
                         <header>
                             <div class="left-side">
-                                <img class="active-avatar" src="avatar_icons/avatar_1.jpg" alt="">
+                                <img class="active-avatar" :src="getAvatar(activeChat)" alt="">
                                 <div class="text-box">
                                     <div class="name">{{ activeChat.name }}</div>
                                     <p class="last-access">Ulitmo accesso 16:40</p>
@@ -80,7 +82,7 @@
                                     :class="message.status"
                                     class="message received">
                                     <span>{{message.message}}</span>
-                                    <small class="time">{{message.date.substring(11, 16)}}</small>
+                                    <small class="time">{{ message.date.substring(11, 16) }}</small>
                                 </li>
                             </ul>
                         </div>
@@ -94,6 +96,5 @@
             </div>
         </div>
         <script src="main.js" charset="utf-8"></script>
-
     </body>
 </html>
