@@ -13,14 +13,18 @@
                 <div id="root" class="clearfix">
                     <aside>
                         <header>
-                            <img class="my-avatar" src="avatar_icons/my_avatar.jpg" alt="">
+                            <div class="left-side">
+                                <img class="my-avatar" src="avatar_icons/my_avatar.jpg" alt="">
+                                <div class="name">Davide</div>
+                            </div>
+
                             <div class="icon-box">
                                 <a href="#"><i class="fas fa-sync-alt"></i></a>
                                 <a href="#"><i class="fas fa-comment-alt"></i></a>
                                 <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                             </div>
                         </header>
-                        <div id="notification-cta">
+                        <div :class='isHidden' id="notification-cta">
                             <div class="left-side">
                                 <div class="bell-container">
                                     <i class="fas fa-bell-slash"></i>
@@ -35,21 +39,23 @@
                             </div>
 
                             <div class="right-side">
-                                <i class="fas fa-times"></i>
+                                <i @click="closeNotification" class="fas fa-times"></i>
                             </div>
                         </div>
-                        <div id="prev-conv">
+                        <div :class="notificationClosed" id="prev-conv">
                             <div class="input-box">
                                 <div class="search-bar">
                                     <i class="fas fa-search"></i>
-                                    <input type="text" name="" placeholder="Cerca o inizia una nuova chat">
+                                    <input v-model="contactFilter"
+                                           type="text" name="" placeholder="Cerca o inizia una nuova chat">
                                 </div>
                             </div>
                             <ul class="contact-list">
                                 <li v-for="contact in contacts"
+                                    v-if="contact.name.toLowerCase().startsWith(contactFilter.toLowerCase())"
                                     @click="openChat(contact)"
                                     class="contact">
-                                    <img :src="getAvatar(contact)" alt="">
+                                    <img :src="'avatar_icons/avatar' + contact.avatar + '.jpg'" alt="">
                                     <div class="text-box">
                                         <div class="name">{{ contact.name }}</div>
                                         <p class="last-message">{{ contact.messages[contact.messages.length - 1].message }}</p>
@@ -64,7 +70,7 @@
                     <main>
                         <header>
                             <div class="left-side">
-                                <img class="active-avatar" :src="getAvatar(activeChat)" alt="">
+                                <img class="active-avatar" :src="'avatar_icons/avatar' + activeChat.avatar + '.jpg'" alt="">
                                 <div class="text-box">
                                     <div class="name">{{ activeChat.name }}</div>
                                     <p class="last-access">Ulitmo accesso 16:40</p>
@@ -91,7 +97,10 @@
                             <input v-model='newMessage'
                                    @keyup.enter='sendMessage'
                                    placeholder="Scrivi un messaggio">
-                            <i class="fas fa-microphone"></i>
+                            <i v-if="newMessage == ''" class="fas fa-microphone"></i>
+                            <i v-if="newMessage != ''"
+                               @click="sendMessage"
+                               class="fas fa-paper-plane rotate"></i>
                         </footer>
                     </main>
                 </div>

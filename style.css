@@ -5,6 +5,7 @@
     font-family: sans-serif;
 }
 
+
 .clearfix::after {
     content: '';
     display: table;
@@ -93,6 +94,10 @@ header img {
     box-shadow: 1px 0 1px rgba(0, 0, 0, 0.05);
 }
 
+#notification-cta.hidden {
+    display: none;
+}
+
 #notification-cta .left-side {
     display: flex;
     align-items: center;
@@ -144,9 +149,15 @@ header img {
     height: calc(100% - 60px - 80px);
 }
 
+#prev-conv.taller {
+    height: calc(100% - 60px);
+}
+
 #prev-conv .input-box {
     background: #ededed;
     padding: 5px 10px;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
 }
 
 #prev-conv .search-bar {
@@ -177,8 +188,8 @@ header img {
 }
 
 #prev-conv .contact-list {
-    height: calc(100% - 50px);
-    overflow-y: scroll;
+    height: calc(100% - 52px);
+    overflow-y: auto;
     list-style-type: none;
 }
 
@@ -187,7 +198,13 @@ header img {
     display: flex;
     justify-content: space-between;
     padding: 0 5px;
+    cursor: default;
 }
+
+#prev-conv .contact-list .contact:hover {
+    background: #f2f2f2;
+}
+
 
 #prev-conv .contact-list .contact img {
     height: 50px;
@@ -235,6 +252,7 @@ main {
 }
 header .left-side {
     display: flex;
+    align-items: center;
 }
 
 header .left-side img {
@@ -244,7 +262,7 @@ header .left-side img {
 #chat-container {
     height: calc(100% - 120px);
     max-height: calc(100% - 120px);
-    overflow-y: scroll;
+    overflow-y: auto;
     background: url("https://fsb.zobj.net/crop.php?r=-P6OqVJVtAEn3HWiU44dCF8VtpVjSmB5btM0cUHqUgbi2xFGN3YQ8q3XpEUlOG0hF6rSZas8eX_zBoKWmF3IaPifbkt6ToV-mPQB0-EwU4wUa31Iu5gWsZjCHzaoC73kj1mmSdn2oKc1q0nIrFZCkWHE_fyIsJaPkcw0jDptCxL1Kxt0me-T_Jx8Ts0");
     position: relative;
 }
@@ -299,16 +317,40 @@ footer {
 }
 
 footer i {
-    margin-right: 15px;
+    margin-left: 15px;
     font-size: 20px;
     color: #939393;
 }
 
-footer .fa-microphone {
-    margin-right: 0;
-    margin-left: 15px;
+footer .fa-smile {
+    margin-left: 0;
+    margin-right: 15px;
 }
 
+.fa-paper-plane {
+    color: lightblue;
+    cursor: pointer;
+}
+
+.fa-paper-plane:hover {
+    color: blue;
+}
+
+.rotate {
+    animation: rotation 0.5s ease;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes rotation {
+    0 {}
+    50% {
+        transform: rotate(180deg)
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 footer input {
     flex-grow: 1;
     height: 100%;

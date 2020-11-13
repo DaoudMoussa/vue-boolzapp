@@ -87,14 +87,12 @@ const app = new Vue({
                 ],
             },
         ],
-        newMessage: ''
-
-
+        newMessage: '',
+        notificationClosed: '',
+        isHidden: '',
+        contactFilter: ''
     },
     methods: {
-        getAvatar(contact) {
-            return "avatar_icons/avatar" + contact.avatar + ".jpg"
-        },
         openChat(contact) {
             this.activeChat = contact;
         },
@@ -119,6 +117,10 @@ const app = new Vue({
             }, 1000);
 
             this.newMessage = '';
+        },
+        closeNotification() {
+            this.notificationClosed = 'taller';
+            this.isHidden = 'hidden';
         }
 
     },
