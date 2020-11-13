@@ -11,17 +11,20 @@ const app = new Vue({
                     {
                         date: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
-                        status: 'sent'
+                        status: 'sent',
+                        dropdownStatus: 'hidden'
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Ricordati di dargli da mangiare',
-                        status: 'sent'
+                        status: 'sent',
+                        dropdownStatus: 'hidden'
                     },
                     {
                         date: '10/01/2020 16:15:22',
                         message: 'Tutto fatto!',
-                        status: 'received'
+                        status: 'received',
+                        dropdownStatus: 'hidden'
                     }
                 ],
             },
@@ -33,17 +36,20 @@ const app = new Vue({
                     {
                         date: '20/03/2020 16:30:00',
                         message: 'Ciao come stai?',
-                        status: 'sent'
+                        status: 'sent',
+                        dropdownStatus: 'hidden'
                     },
                     {
                         date: '20/03/2020 16:30:55',
                         message: 'Bene grazie! Stasera ci vediamo?',
-                        status: 'received'
+                        status: 'received',
+                        dropdownStatus: 'hidden'
                     },
                     {
                         date: '20/03/2020 16:35:00',
                         message: 'Mi piacerebbe ma devo andare a fare laspesa.',
-                        status: 'received'
+                        status: 'received',
+                        dropdownStatus: 'hidden'
                     }
                 ],
             },
@@ -55,17 +61,20 @@ const app = new Vue({
                     {
                         date: '28/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
-                        status: 'received'
+                        status: 'received',
+                        dropdownStatus: 'hidden'
                     },
                     {
                         date: '28/03/2020 10:20:10',
                         message: 'Sicuro di non aver sbagliato chat?',
-                        status: 'sent'
+                        status: 'sent',
+                        dropdownStatus: 'hidden'
                     },
                     {
                         date: '28/03/2020 16:15:22',
                         message: 'Ah scusa!',
-                        status: 'received'
+                        status: 'received',
+                        dropdownStatus: 'hidden'
                     }
                 ],
             },
@@ -77,12 +86,14 @@ const app = new Vue({
                     {
                         date: '10/01/2020 15:30:55',
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
-                        status: 'sent'
+                        status: 'sent',
+                        dropdownStatus: 'hidden'
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
-                        status: 'received'
+                        status: 'received',
+                        dropdownStatus: 'hidden'
                     }
                 ],
             },
@@ -102,8 +113,14 @@ const app = new Vue({
             const newObjectMessage = {
                 date: myDate,
                 message: this.newMessage,
-                status: 'sent'
+                status: 'sent',
+                dropdownStatus: 'hidden'
+
             }
+
+            // let chat = document.getElementById('chat-container');
+            // console.log(chat);
+            // chat.scrollTop = chat.scrollHeight - chat.clientHeight;
 
             this.activeChat.messages.push(newObjectMessage);
             setTimeout(() => {
@@ -111,9 +128,11 @@ const app = new Vue({
                 const newAnswerMessage = {
                     date: theirDate,
                     message: 'ok',
-                    status: 'received'
+                    status: 'received',
+                    dropdownStatus: 'hidden'
                 }
                 this.activeChat.messages.push(newAnswerMessage);
+                // chat.scrollTop = chat.scrollHeight - chat.clientHeight;
             }, 1000);
 
             this.newMessage = '';
@@ -121,6 +140,12 @@ const app = new Vue({
         closeNotification() {
             this.notificationClosed = 'taller';
             this.isHidden = 'hidden';
+        },
+        dropMenu(message) {
+            message.dropdownStatus == 'hidden' ? message.dropdownStatus = 'visible' : message.dropdownStatus = 'hidden';
+        },
+        deleteMessage(indexMessage) {
+            this.activeChat.messages.splice(indexMessage, 1);
         }
 
     },

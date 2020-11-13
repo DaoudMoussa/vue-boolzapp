@@ -84,10 +84,15 @@
                         </header>
                         <div id="chat-container">
                             <ul class="messages">
-                                <li v-for="message in activeChat.messages"
+                                <li v-for="(message, index) in activeChat.messages"
                                     :class="message.status"
                                     class="message">
                                     <span>{{message.message}}</span>
+                                    <i @click="dropMenu(message)" class="fas fa-angle-down"></i>
+                                    <ul :class="message.dropdownStatus" class="dropdown">
+                                        <li>Info</li>
+                                        <li @click="deleteMessage(index)">Cancella messaggio</li>
+                                    </ul>
                                     <small class="time">{{ message.date.substring(11, 16) }}</small>
                                 </li>
                             </ul>
