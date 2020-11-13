@@ -118,9 +118,8 @@ const app = new Vue({
 
             }
 
-            // let chat = document.getElementById('chat-container');
-            // console.log(chat);
-            // chat.scrollTop = chat.scrollHeight - chat.clientHeight;
+            scrollBarBottom();
+
 
             this.activeChat.messages.push(newObjectMessage);
             setTimeout(() => {
@@ -132,7 +131,7 @@ const app = new Vue({
                     dropdownStatus: 'hidden'
                 }
                 this.activeChat.messages.push(newAnswerMessage);
-                // chat.scrollTop = chat.scrollHeight - chat.clientHeight;
+                scrollBarBottom();
             }, 1000);
 
             this.newMessage = '';
@@ -154,6 +153,16 @@ const app = new Vue({
     }
 });
 
+function scrollBarBottom() {
+    setTimeout(function() {
+        let chat = document.getElementById('chat');
+        console.log(chat.scrollTop);
+
+        chat.scrollTop = chat.scrollHeight - chat.clientHeight;
+        console.log(chat.scrollTop);
+
+    }, 100);
+}
 function getDate() {
     const date = new Date();
     const month = date.getMonth() + 1

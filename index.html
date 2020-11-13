@@ -83,7 +83,7 @@
                             </div>
                         </header>
                         <div id="chat-container">
-                            <ul class="messages">
+                            <ul id="chat" class="messages clearfix">
                                 <li v-for="(message, index) in activeChat.messages"
                                     :class="message.status"
                                     class="message">

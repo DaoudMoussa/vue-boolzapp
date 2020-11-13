@@ -269,15 +269,15 @@ header .left-side img {
 #chat-container {
     height: calc(100% - 120px);
     max-height: calc(100% - 120px);
-    overflow-y: auto;
     background: url("https://fsb.zobj.net/crop.php?r=-P6OqVJVtAEn3HWiU44dCF8VtpVjSmB5btM0cUHqUgbi2xFGN3YQ8q3XpEUlOG0hF6rSZas8eX_zBoKWmF3IaPifbkt6ToV-mPQB0-EwU4wUa31Iu5gWsZjCHzaoC73kj1mmSdn2oKc1q0nIrFZCkWHE_fyIsJaPkcw0jDptCxL1Kxt0me-T_Jx8Ts0");
     position: relative;
 }
 
 .messages {
-    width: 100%;
-    list-style-type: none;
     max-height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    list-style-type: none;
 }
 
 .message {
