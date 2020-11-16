@@ -79,20 +79,46 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Luisa',
+                name: 'Donato',
                 avatar: '_4',
                 visible: true,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
-                        message: 'Lo sai che ha aperto una nuova pizzeria?',
+                        message: 'Fai commit',
+                        status: 'received',
+                        dropdownStatus: 'hidden'
+                    }
+                ],
+            },
+            {
+                name: 'Francesco',
+                avatar: '_5',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Stasera partita?',
                         status: 'sent',
                         dropdownStatus: 'hidden'
                     },
                     {
                         date: '10/01/2020 15:50:00',
-                        message: 'Si, ma preferirei andare al cinema',
+                        message: 'Non ci sono.',
                         status: 'received',
+                        dropdownStatus: 'hidden'
+                    }
+                ],
+            },
+            {
+                name: 'Maria',
+                avatar: '_6',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Heyy',
+                        status: 'sent',
                         dropdownStatus: 'hidden'
                     }
                 ],
@@ -106,6 +132,7 @@ const app = new Vue({
     methods: {
         openChat(contact) {
             this.activeChat = contact;
+            this.contactFilter = '';
         },
         sendMessage() {
             const myDate = getDate();
@@ -115,7 +142,6 @@ const app = new Vue({
                 message: this.newMessage,
                 status: 'sent',
                 dropdownStatus: 'hidden'
-
             }
 
             scrollBarBottom();
@@ -142,9 +168,22 @@ const app = new Vue({
         },
         dropMenu(message) {
             message.dropdownStatus == 'hidden' ? message.dropdownStatus = 'visible' : message.dropdownStatus = 'hidden';
+            scrollBarBottom();
         },
         deleteMessage(indexMessage) {
-            this.activeChat.messages.splice(indexMessage, 1);
+            // this.activeChat.messages.splice(indexMessage, 1);
+            Vue.delete(this.activeChat.messages, indexMessage)
+        },
+        getLastmessageHour(contact) {
+            const messageArray = contact.messages;
+            const lastMessage = messageArray[messageArray.length - 1];
+            const lastMessageDate = lastMessage.date;
+            console.log(lastMessageDate);
+            return this.getHourAndMinute(lastMessageDate);
+        },
+        getHourAndMinute(myDate) {
+            const myNewFormatDate = dayjs(myDate, "DD/MM/YYYY HH:mm:ss");
+            return myNewFormatDate.format('HH:mm');
         }
 
     },
@@ -156,21 +195,11 @@ const app = new Vue({
 function scrollBarBottom() {
     setTimeout(function() {
         let chat = document.getElementById('chat');
-        console.log(chat.scrollTop);
 
         chat.scrollTop = chat.scrollHeight - chat.clientHeight;
-        console.log(chat.scrollTop);
 
     }, 100);
 }
 function getDate() {
-    const date = new Date();
-    const month = date.getMonth() + 1
-    const year = date.getFullYear();
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
-
-    return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+    return dayjs().format("DD/MM/YYYY HH:mm:ss");
 }

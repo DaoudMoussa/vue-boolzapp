@@ -3,6 +3,8 @@
     <head>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js" integrity="sha512-C2m821NxMpJ4Df47O4P/17VPqt0yiK10UmGl59/e5ynRRYiCSBvy0KHJjhp2XIjUJreuR+y3SIhVyiVilhCmcQ==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/plugin/customParseFormat.min.js" integrity="sha512-vAkK3r73UUkIPKpHGCp7Rhpt/xptuKZpavqwaCrDwjmbgPdqBlWZuFnLvAoN7jigf6Hg5NjZmZZM1xqJaiZfsQ==" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <meta charset="utf-8">
         <title>Vue - BoolzApp</title>
@@ -54,14 +56,14 @@
                                 <li v-for="contact in contacts"
                                     v-if="contact.name.toLowerCase().startsWith(contactFilter.toLowerCase())"
                                     @click="openChat(contact)"
-                                    class="contact">
+                                    class="contact" :class="contact == activeChat ? 'active' : null">
                                     <img :src="'avatar_icons/avatar' + contact.avatar + '.jpg'" alt="">
                                     <div class="text-box">
                                         <div class="name">{{ contact.name }}</div>
                                         <p class="last-message">{{ contact.messages[contact.messages.length - 1].message }}</p>
                                     </div>
                                     <div class="last-access">
-                                        17:21
+                                        {{ getLastmessageHour(contact) }}
                                     </div>
                                 </li>
                             </ul>
@@ -93,7 +95,7 @@
                                         <li>Info</li>
                                         <li @click="deleteMessage(index)">Cancella messaggio</li>
                                     </ul>
-                                    <small class="time">{{ message.date.substring(11, 16) }}</small>
+                                    <small class="time">{{ getHourAndMinute(message.date) }}</small>
                                 </li>
                             </ul>
                         </div>
