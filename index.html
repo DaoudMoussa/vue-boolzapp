@@ -63,9 +63,10 @@
                                     <img :src="'avatar_icons/avatar' + contact.avatar + '.jpg'" alt="">
                                     <div class="text-box">
                                         <div class="name">{{ contact.name }}</div>
-                                        <p class="last-message">{{ contact.messages[contact.messages.length - 1].message }}</p>
+                                        <p class="last-message"
+                                            v-if="contact.messages.length != 0">{{ contact.messages[contact.messages.length - 1].message }}</p>
                                     </div>
-                                    <div class="last-access">
+                                    <div class="last-access" v-if="contact.messages.length != 0">
                                         {{ getLastmessageHour(contact) }}
                                     </div>
                                 </li>

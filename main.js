@@ -178,7 +178,6 @@ const app = new Vue({
             const messageArray = contact.messages;
             const lastMessage = messageArray[messageArray.length - 1];
             const lastMessageDate = lastMessage.date;
-            console.log(lastMessageDate);
             return this.getHourAndMinute(lastMessageDate);
         },
         getHourAndMinute(myDate) {
