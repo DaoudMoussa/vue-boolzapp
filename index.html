@@ -52,14 +52,16 @@
                                 <div class="search-bar">
                                     <i class="fas fa-search"></i>
                                     <input v-model="contactFilter"
+                                           @keyup="applyFilter"
                                            type="text" name="" placeholder="Cerca o inizia una nuova chat">
                                 </div>
                             </div>
                             <ul class="contact-list">
                                 <li v-for="contact in contacts"
-                                    v-if="contact.name.toLowerCase().startsWith(contactFilter.toLowerCase())"
+                                    v-if="contact.visible"
                                     @click="openChat(contact)"
                                     class="contact" :class="contact == activeChat ? 'active' : null">
+                                    <!-- "contact.name.toLowerCase().startsWith(contactFilter.toLowerCase())" -->
                                     <img :src="'avatar_icons/avatar' + contact.avatar + '.jpg'" alt="">
                                     <div class="text-box">
                                         <div class="name">{{ contact.name }}</div>

@@ -132,6 +132,11 @@ const app = new Vue({
     methods: {
         openChat(contact) {
             this.activeChat = contact;
+
+            this.contacts.forEach((contact) => {
+                contact.visible = true;
+            });
+
             this.contactFilter = '';
         },
         sendMessage() {
@@ -183,6 +188,17 @@ const app = new Vue({
         getHourAndMinute(myDate) {
             const myNewFormatDate = dayjs(myDate, "DD/MM/YYYY HH:mm:ss");
             return myNewFormatDate.format('HH:mm');
+        },
+        applyFilter() {
+            this.contacts.forEach((contact) => {
+                let filter = this.contactFilter.toLowerCase()
+                let nameContact = contact.name.toLowerCase();
+                if(nameContact.includes(filter)) {
+                    contact.visible = true;
+                } else {
+                    contact.visible = false;
+                }
+            })
         }
 
     },
