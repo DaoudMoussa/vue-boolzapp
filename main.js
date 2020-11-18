@@ -139,6 +139,11 @@ const app = new Vue({
 
             this.contactFilter = '';
         },
+        shiftContact() {
+            const index = this.contacts.indexOf(this.activeChat);
+            this.contacts.splice(0, 0, this.activeChat);
+            this.contacts.splice(index + 1, 1);
+        },
         sendMessage() {
             const myDate = getDate();
 
@@ -149,6 +154,7 @@ const app = new Vue({
                 dropdownStatus: 'hidden'
             }
 
+            this.shiftContact();
             scrollBarBottom();
 
 
