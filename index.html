@@ -96,8 +96,9 @@
                                     :class="message.status"
                                     class="message">
                                     <span>{{message.message}}</span>
-                                    <i @click="dropMenu(message)" class="fas fa-angle-down"></i>
-                                    <ul :class="message.dropdownStatus" class="dropdown">
+                                    <i @click="dropMenu(index)" class="fas fa-angle-down"></i>
+                                    <ul v-if="dropdownIndex == index"  class="dropdown">
+                                        <!-- :class="message.dropdownStatus -->
                                         <li>Info</li>
                                         <li @click="deleteMessage(index)">Cancella messaggio</li>
                                     </ul>
